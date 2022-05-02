@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+  <div class="container">
+
+    <h1 class="mt-4">
+      Modifier l'étudiant
+    </h1>
+
+    {{ form_start(form) }}
+
+      <div class="form-group">
+        {{ form_label(form.FirstName) }}
+        {{ form_widget(form.FirstName) }}
+        <div class="form-error">
+          {{ form_errors(form.FirstName) }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.LastName) }}
+        {{ form_widget(form.LastName) }}
+        <div class="form-error">
+          {{ form_errors(form.LastName) }}
+        </div>
+      </div>
+      <div class="form-group">
+        {{ form_row(form.submit) }}
+      </div>
+
+    {{ form_end(form) }}
+  </div>
+
+  {# POUR UTILISER QU'UN SEUL FORMULAIRE #}
+  <script>
+    document.querySelector('#student_submit').textContent = 'Modifer l\'étudiant';
+  </script>
+
+{% endblock %}

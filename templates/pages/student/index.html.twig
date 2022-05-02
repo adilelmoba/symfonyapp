@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %} SymfonyApp - Les étudiants {% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+  <h1>La liste des étudiants: </h1>
+
+  <a href="{{ path('new') }}" class="btn btn-light my-1">
+  Ajouter un nouveau étudiant
+  </a>
+  
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success mt-2 p-2">
+      {{ message }}
+    </div>
+  {% endfor %}
+  
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">N° Étudiant</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+
+      <th scope="col">Edition</th>
+      <th scope="col">Suppresion</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+      <tr>
+        <th scope="row">{{ student.numEtud }}</th>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.firstName }}</td>
+
+        <td>
+          <a href="{{ path('edit', {id: student.id})}}" class="btn btn-info">
+              Modifier
+          </a>
+        </td>
+        <td>
+          <a href="{{ path('delete', {id: student.id})}}" class="btn btn-warning">
+              Supprimer
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+</div>
+
+{% endblock %}
